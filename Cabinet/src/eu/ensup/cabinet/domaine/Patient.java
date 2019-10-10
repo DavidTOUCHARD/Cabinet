@@ -1,10 +1,18 @@
 package eu.ensup.cabinet.domaine;
 
+/**
+ * @author David
+ *
+ */
 public class Patient {
 	private String nom;
 	private String prenom;
 	private Medecin medecin;
 
+	/**
+	 * @param nom
+	 * @param prenom
+	 */
 	public Patient(String nom, String prenom) {
 		super();
 		this.nom = nom;

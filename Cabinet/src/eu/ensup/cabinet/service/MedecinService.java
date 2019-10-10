@@ -5,6 +5,10 @@ import eu.ensup.cabinet.domaine.Patient;
 
 public class MedecinService {
 
+	/**
+	 * @param patient
+	 * @param medecin
+	 */
 	public void consulter(Patient patient, Medecin medecin) {
 		System.out.println("Le medecin " + medecin.getNom() + " " + medecin.getPrenom() + " consulte le patient : "
 				+ patient.getPrenom() + " " + patient.getNom());

@@ -4,6 +4,10 @@ import eu.ensup.cabinet.domaine.Medecin;
 import eu.ensup.cabinet.domaine.Patient;
 import eu.ensup.cabinet.service.MedecinService;
 
+/**
+ * @author David
+ *
+ */
 public class Launcher {
 
 	public static void main(String[] args) {
