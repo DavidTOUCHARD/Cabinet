@@ -24,7 +24,7 @@ public class TestMedecinServiceV1 {
 	}
 
 	@Test
-	public void testLectureInfoMedecinV1() {
+	public void testLectureInfoMedecinV1() { // mock + stubbing
 		Patient patient = new Patient(1, "TOUCHARD", "David", "tousse");
 		IMedecinDao dao = Mockito.mock(IMedecinDao.class);
 
