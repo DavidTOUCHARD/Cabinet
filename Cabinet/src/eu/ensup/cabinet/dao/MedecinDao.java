@@ -37,9 +37,9 @@ public class MedecinDao implements IMedecinDao {
 	}
 
 	@Override
-	public void readMedecin(int idMedecin) {
+	public Medecin readMedecin(int idMedecin) {
 		ConnexionDao cd = new ConnexionDao();
-
+		Medecin med = null;
 		Statement stm = null;
 		try {
 			stm = cd.connection();
@@ -56,13 +56,14 @@ public class MedecinDao implements IMedecinDao {
 				String prenom = rs.getString(6);
 				String specialite = rs.getString(3);
 				System.out.println(nom + " " + prenom + " " + specialite);
+				med = new Medecin(idMedecin, nom, prenom, null, specialite);
 			}
 
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
 		cd.deconnection();
-
+		return med;
 	}
 
 }

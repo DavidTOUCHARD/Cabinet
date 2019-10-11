@@ -6,6 +6,6 @@ public interface IMedecinDao {
 
 	public void insertMedecin(Medecin medecin);
 
-	public void readMedecin(int idMedecin);
+	public Medecin readMedecin(int idMedecin);
 
 }

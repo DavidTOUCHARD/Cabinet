@@ -8,11 +8,16 @@ import eu.ensup.cabinet.domaine.Medecin;
 import eu.ensup.cabinet.domaine.Patient;
 
 public class MedecinService {
-	public IMedecinDao dao;
+	IMedecinDao medecindao;
+
+	public MedecinService(IMedecinDao dao) {
+		// TODO Auto-generated constructor stub
+		this.medecindao = dao;
+	}
 
 	public void ajoutMedecin(Medecin medecin) throws SQLException {
 		MedecinDao medecindao = new MedecinDao();
-		this.dao.insertMedecin(medecin);
+		this.medecindao.insertMedecin(medecin);
 		System.out.println("Insertion du medecin : " + medecin.getNom() + " dans la base de données");
 	}
 
@@ -26,8 +31,9 @@ public class MedecinService {
 				+ "dont les symptomes sont : " + patient.getSymptomes());
 	}
 
-	public void lireMedecin(int idMedecin) throws SQLException {
+	public Medecin lireMedecin(int idMedecin) throws SQLException {
 		MedecinDao medecindao = new MedecinDao();
-		this.dao.readMedecin(idMedecin);
+		Medecin med = this.medecindao.readMedecin(idMedecin);
+		return med;
 	}
 }
