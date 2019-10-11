@@ -1,7 +1,5 @@
 package eu.ensup.cabinet.service;
 
-import java.sql.SQLException;
-
 import eu.ensup.cabinet.dao.IMedecinDao;
 import eu.ensup.cabinet.dao.MedecinDao;
 import eu.ensup.cabinet.domaine.Medecin;
@@ -12,10 +10,10 @@ public class MedecinService {
 
 	public MedecinService(IMedecinDao dao) {
 		// TODO Auto-generated constructor stub
-		this.medecindao = dao;
+		medecindao = dao;
 	}
 
-	public void ajoutMedecin(Medecin medecin) throws SQLException {
+	public void ajoutMedecin(Medecin medecin) {
 		MedecinDao medecindao = new MedecinDao();
 		this.medecindao.insertMedecin(medecin);
 		System.out.println("Insertion du medecin : " + medecin.getNom() + " dans la base de données");
@@ -31,7 +29,7 @@ public class MedecinService {
 				+ "dont les symptomes sont : " + patient.getSymptomes());
 	}
 
-	public Medecin lireMedecin(int idMedecin) throws SQLException {
+	public Medecin lireMedecin(int idMedecin) {
 		MedecinDao medecindao = new MedecinDao();
 		Medecin med = this.medecindao.readMedecin(idMedecin);
 		return med;

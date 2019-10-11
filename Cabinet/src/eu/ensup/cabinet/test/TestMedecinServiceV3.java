@@ -1,8 +1,5 @@
 package eu.ensup.cabinet.test;
 
-import java.sql.SQLException;
-
-import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -15,38 +12,32 @@ import eu.ensup.cabinet.domaine.Medecin;
 import eu.ensup.cabinet.domaine.Patient;
 import eu.ensup.cabinet.service.MedecinService;
 
-/**
- * @author David test unitaire de la classe medecin service
- *
- */
 @RunWith(MockitoJUnitRunner.class)
-public class TestMedecinService {
+public class TestMedecinServiceV3 {
 
 	@Mock
-	IMedecinDao dao; // remplace le IMedecinDao dao=
-						// Mockito.mock(IMedecinDao.class);
+	IMedecinDao dao;
 
 	@Before
 	public void setUp() throws Exception {
 	}
 
 	@Test
-	public void testLectureInfoMedecin() {
+	public void testLectureInfoMedecinV3() {
 		Patient patient = new Patient(1, "TOUCHARD", "David", "tousse");
 		// IMedecinDao dao = Mockito.mock(IMedecinDao.class);
 
 		MedecinService meds = new MedecinService(dao);
 		Mockito.when(dao.readMedecin(2)).thenReturn(new Medecin(3, "Docteur", "HOUSE", patient, "generaliste"));
+		Mockito.when(dao.readMedecin(2)).thenReturn(new Medecin(3, "Docteur", "HOUSE", patient, "generaliste"));
 
 		Medecin medReturned = null;
-		try {
-			medReturned = meds.lireMedecin(2);
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+		medReturned = meds.lireMedecin(2);
 
-		Assert.assertEquals(medReturned.getPrenom(), "HOUSE");
+		// On verifie que readMedecin avec 2 comme parametre a été appelé 1 fois
+		Mockito.verify(dao, Mockito.times(1)).readMedecin(2);
+		// On verifie que readMedecin a été appelé au moins 1 fois
+		Mockito.verify(dao, Mockito.atLeast(1)).readMedecin(2);
 
 	}
 
